@@ -87,3 +87,7 @@ include vendor/custom/config/ota.mk
 
 # Version
 include vendor/custom/config/version.mk
+
+# Extra packages
+PRODUCT_PACKAGES += \
+ LMOFreeformSidebar
