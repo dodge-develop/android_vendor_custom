@@ -13,7 +13,12 @@ PRODUCT_PRODUCT_PROPERTIES += \
     net.pixelos.version=$(CUSTOM_VERSION_PROP)
 
 # Updater
-ifeq ($(IS_OFFICIAL),true)
+# net.pixelos.build_type must be non-empty for the Updater app; unofficial builds
+# have no official update channel, so advertise themselves as "unofficial".
+ifneq ($(IS_OFFICIAL),true)
+    PRODUCT_PRODUCT_PROPERTIES += \
+        net.pixelos.build_type=unofficial
+else
     PRODUCT_PRODUCT_PROPERTIES += \
         net.pixelos.build_type=ci
 endif
